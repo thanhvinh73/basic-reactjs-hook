@@ -7,7 +7,22 @@ import { useState } from "react";
 const App = () => {
   //state
   let [name, setName] = useState("Vinh");
-  let [address, setAddress] = useState("");
+  let [newTodoTitle, setNewTodoTitle] = useState("");
+  const [todos, setTodos] = useState([
+    { id: "todo1", title: "Doing homework" },
+    { id: "todo2", title: "Watching movie" },
+  ]);
+
+  const createNewTodo = () => {
+    if (newTodoTitle && newTodoTitle !== "") {
+      let newTodo = {
+        title: newTodoTitle,
+        id: Math.floor(Math.random() * 100),
+      };
+      setTodos([...todos, newTodo]);
+      setNewTodoTitle("");
+    }
+  };
 
   return (
     <div className="App">
@@ -15,22 +30,31 @@ const App = () => {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h3>Hello world with {name}</h3>
-        <h4>Address: {address}</h4>
+        <div className="todos-container">
+          {todos.length !== 0 &&
+            todos.map((item, index) => {
+              return (
+                <li className="todo-child" key={item.id}>
+                  {index + 1} - {item.title} ({item.id})
+                </li>
+              );
+            })}
+        </div>
         <input
           type="text"
-          value={address}
+          value={newTodoTitle}
           onChange={(event) => {
-            setAddress(event.target.value);
+            setNewTodoTitle(event.target.value);
           }}
         />
         <button
           type="button"
           style={{ marginTop: "10px" }}
           onClick={() => {
-            setName(address);
+            createNewTodo();
           }}
         >
-          Click me
+          Add todo
         </button>
       </header>
     </div>
