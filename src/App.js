@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import Nav from "./views/Nav";
 import { useState } from "react";
+import Todo from "./views/Todo";
 
 //~~class
 const App = () => {
@@ -30,16 +31,7 @@ const App = () => {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h3>Hello world with {name}</h3>
-        <div className="todos-container">
-          {todos.length !== 0 &&
-            todos.map((item, index) => {
-              return (
-                <li className="todo-child" key={item.id}>
-                  {index + 1} - {item.title} ({item.id})
-                </li>
-              );
-            })}
-        </div>
+        <Todo todos={todos} />
         <input
           type="text"
           value={newTodoTitle}
