@@ -1,13 +1,13 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Nav from "./views/Nav";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Todo from "./views/Todo";
 
 //~~class
 const App = () => {
   //state
-  let [name, setName] = useState("Vinh");
+  let [name] = useState("Vinh");
   let [newTodoTitle, setNewTodoTitle] = useState("");
   const [todos, setTodos] = useState([
     { id: "todo1", title: "Doing homework", type: "eric" },
@@ -36,7 +36,10 @@ const App = () => {
 
   useEffect(() => {
     console.log("Run useEffect");
-  });
+  }, [newTodoTitle]);
+  //useEffect((), []) = componentDidMount
+  //useEffect((), [a, b, c]) = componentDidUpdate
+  //useEffect((...return...), []) = componentDidMount, componentWillUnmount
 
   return (
     <div className="App">
