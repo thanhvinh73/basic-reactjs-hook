@@ -2,6 +2,7 @@ const Todo = (props) => {
   const todos = props.todos;
   return (
     <>
+      <div className="title">{props.title}</div>
       <div className="todos-container">
         {todos.length !== 0 &&
           todos.map((item, index) => {
@@ -11,6 +12,7 @@ const Todo = (props) => {
               </li>
             );
           })}
+        <hr />
       </div>
     </>
   );

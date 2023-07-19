@@ -10,8 +10,10 @@ const App = () => {
   let [name, setName] = useState("Vinh");
   let [newTodoTitle, setNewTodoTitle] = useState("");
   const [todos, setTodos] = useState([
-    { id: "todo1", title: "Doing homework" },
-    { id: "todo2", title: "Watching movie" },
+    { id: "todo1", title: "Doing homework", type: "eric" },
+    { id: "todo2", title: "Watching movie", type: "eric" },
+    { id: "todo3", title: "Playing game", type: "VinhThanh" },
+    { id: "todo4", title: "Listening japanese", type: "VinhThanh" },
   ]);
 
   const createNewTodo = () => {
@@ -19,6 +21,7 @@ const App = () => {
       let newTodo = {
         title: newTodoTitle,
         id: Math.floor(Math.random() * 100),
+        type: "eric",
       };
       setTodos([...todos, newTodo]);
       setNewTodoTitle("");
@@ -27,11 +30,15 @@ const App = () => {
 
   return (
     <div className="App">
-      <Nav />
       <header className="App-header">
+        <Nav />
         <img src={logo} className="App-logo" alt="logo" />
         <h3>Hello world with {name}</h3>
-        <Todo todos={todos} />
+        <Todo todos={todos} title={"All Todo"} />
+        <Todo
+          todos={todos.filter((item) => item.type === "eric")}
+          title={"Eric's Todo"}
+        />
         <input
           type="text"
           value={newTodoTitle}
