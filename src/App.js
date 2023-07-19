@@ -28,16 +28,23 @@ const App = () => {
     }
   };
 
+  const deleteTodo = (todo) => {
+    let newTodos = todos;
+    newTodos = newTodos.filter((item) => item.id !== todo.id);
+    setTodos(newTodos);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
         <Nav />
         <img src={logo} className="App-logo" alt="logo" />
         <h3>Hello world with {name}</h3>
-        <Todo todos={todos} title={"All Todo"} />
+        <Todo todos={todos} title={"All Todo"} deleteTodo={deleteTodo} />
         <Todo
-          todos={todos.filter((item) => item.type === "eric")}
-          title={"Eric's Todo"}
+          todos={todos.filter((item) => item.type === "VinhThanh")}
+          title={"VinhThanh's Todo"}
+          deleteTodo={deleteTodo}
         />
         <input
           type="text"
