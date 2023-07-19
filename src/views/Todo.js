@@ -10,19 +10,17 @@ const Todo = (props) => {
         {todos.length !== 0 &&
           todos.map((item, index) => {
             return (
-              <>
-                <li className="todo-child" key={item.id}>
-                  {index + 1} - {item.title} ({item.id})
-                  <span
-                    style={{ cursor: "pointer" }}
-                    onClick={() => {
-                      handleDeleteTodo(item);
-                    }}
-                  >
-                    {"    "}X
-                  </span>
-                </li>
-              </>
+              <li className="todo-child" key={item.id}>
+                {index + 1} - {item.title} ({item.id})
+                <span
+                  style={{ cursor: "pointer" }}
+                  onClick={() => {
+                    handleDeleteTodo(item);
+                  }}
+                >
+                  {"    "}X
+                </span>
+              </li>
             );
           })}
         <hr />

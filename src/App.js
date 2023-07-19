@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Nav from "./views/Nav";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Todo from "./views/Todo";
 
 //~~class
@@ -33,6 +33,10 @@ const App = () => {
     newTodos = newTodos.filter((item) => item.id !== todo.id);
     setTodos(newTodos);
   };
+
+  useEffect(() => {
+    console.log("Run useEffect");
+  });
 
   return (
     <div className="App">
