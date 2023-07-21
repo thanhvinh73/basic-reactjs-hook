@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 const Covid = () => {
   const [dataCovid, setDataCovid] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setisLoading] = useState(true);
+  const [error, setError] = useState({ title: "", isErr: false });
 
   let fetchData = async () => {
     let res = await axios.get(
@@ -11,14 +12,16 @@ const Covid = () => {
     return res && res.data ? res.data : [];
   };
   useEffect(() => {
-    setTimeout(() => {
-      fetchData()
-        .then((data) => {
-          setDataCovid(data);
-          setLoading(false);
-        })
-        .catch((err) => console.log(err));
-    }, 3000);
+    fetchData()
+      .then((data) => {
+        setDataCovid(data);
+        setisLoading(false);
+        setError({ title: "", isErr: false });
+      })
+      .catch((err) => {
+        setisLoading(false);
+        setError({ title: err.message, isErr: true });
+      });
   }, []);
   return (
     <>
@@ -32,10 +35,10 @@ const Covid = () => {
           </tr>
         </thead>
         <tbody>
-          {!loading &&
-          dataCovid &&
-          dataCovid.locations &&
-          dataCovid.locations.length > 0 ? (
+          {!isLoading &&
+            dataCovid &&
+            dataCovid.locations &&
+            dataCovid.locations.length > 0 &&
             dataCovid.locations.map((item, index) => {
               return (
                 <tr key={index}>
@@ -45,8 +48,8 @@ const Covid = () => {
                   <td>{item.casesToday}</td>
                 </tr>
               );
-            })
-          ) : (
+            })}
+          {!error.isErr ? (
             <tr>
               <td
                 colSpan={4}
@@ -57,6 +60,20 @@ const Covid = () => {
                 }}
               >
                 Loading...
+              </td>
+            </tr>
+          ) : (
+            <tr>
+              <td
+                colSpan={4}
+                style={{
+                  textAlign: "center",
+                  backgroundColor: "#545454",
+                  color: "red",
+                  fontSize: "18px",
+                }}
+              >
+                Something was wrong: {error.title}
               </td>
             </tr>
           )}
