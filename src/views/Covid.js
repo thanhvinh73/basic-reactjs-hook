@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 const Covid = () => {
   const [dataCovid, setDataCovid] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   let fetchData = async () => {
     let res = await axios.get(
@@ -10,16 +11,18 @@ const Covid = () => {
     return res && res.data ? res.data : [];
   };
   useEffect(() => {
-    fetchData()
-      .then((data) => {
-        setDataCovid(data);
-      })
-      .catch((err) => console.log(err));
+    setTimeout(() => {
+      fetchData()
+        .then((data) => {
+          setDataCovid(data);
+          setLoading(false);
+        })
+        .catch((err) => console.log(err));
+    }, 3000);
   }, []);
   return (
     <>
       <table id="customers">
-        {console.log("Check dataCovid table: ", dataCovid)}
         <thead>
           <tr>
             <th>Country</th>
@@ -29,9 +32,10 @@ const Covid = () => {
           </tr>
         </thead>
         <tbody>
-          {dataCovid &&
-            dataCovid.locations &&
-            dataCovid.locations.length > 0 &&
+          {!loading &&
+          dataCovid &&
+          dataCovid.locations &&
+          dataCovid.locations.length > 0 ? (
             dataCovid.locations.map((item, index) => {
               return (
                 <tr key={index}>
@@ -41,7 +45,21 @@ const Covid = () => {
                   <td>{item.casesToday}</td>
                 </tr>
               );
-            })}
+            })
+          ) : (
+            <tr>
+              <td
+                colSpan={4}
+                style={{
+                  textAlign: "center",
+                  backgroundColor: "#545454",
+                  fontSize: "24px",
+                }}
+              >
+                Loading...
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </>

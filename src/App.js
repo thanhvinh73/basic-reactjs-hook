@@ -48,11 +48,11 @@ const App = () => {
         <Nav />
 
         <div
-          style={{ display: "flex", flexWrap: "nowrap", margin: "22 px 10px" }}
+          style={{ display: "flex", flexWrap: "nowrap", margin: "24px 10px" }}
         >
-          <h2 style={{ margin: "auto 0" }}>
+          <h3 style={{ margin: "auto 0" }}>
             Coronavirus stats in the Vietnam{" "}
-          </h2>
+          </h3>
           <img
             src={logo}
             className="App-logo"
