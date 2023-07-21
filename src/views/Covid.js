@@ -1,28 +1,14 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-const Covid = () => {
-  const [dataCovid, setDataCovid] = useState([]);
-  const [isLoading, setisLoading] = useState(true);
-  const [error, setError] = useState({ title: "", isErr: false });
+import useFetch from "../customize/fetch";
 
-  let fetchData = async () => {
-    let res = await axios.get(
-      "https://api.apify.com/v2/key-value-stores/EaCBL1JNntjR3EakU/records/LATEST?disableRedirect=true"
-    );
-    return res && res.data ? res.data : [];
-  };
-  useEffect(() => {
-    fetchData()
-      .then((data) => {
-        setDataCovid(data);
-        setisLoading(false);
-        setError({ title: "", isErr: false });
-      })
-      .catch((err) => {
-        setisLoading(false);
-        setError({ title: err.message, isErr: true });
-      });
-  }, []);
+const Covid = () => {
+  const {
+    data: dataCovid,
+    isLoading,
+    error,
+  } = useFetch(
+    "https://api.apify.com/v2/key-value-stores/EaCBL1JNntjR3EakU/records/LATEST?disableRedirect=true"
+  );
+
   return (
     <>
       <table id="customers">
@@ -57,6 +43,7 @@ const Covid = () => {
                   textAlign: "center",
                   backgroundColor: "#545454",
                   fontSize: "24px",
+                  color: "greenyellow",
                 }}
               >
                 Loading...
