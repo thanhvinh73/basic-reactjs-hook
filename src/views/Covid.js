@@ -1,6 +1,10 @@
 import useFetch from "../customize/fetch";
+import moment from "moment";
 
 const Covid = () => {
+  const today = new Date(new Date().setHours(0, 0, 0, 0));
+  const priorDate = moment().subtract(30, "days");
+
   const {
     data: dataCovid,
     isLoading,
@@ -11,6 +15,8 @@ const Covid = () => {
 
   return (
     <>
+      {console.log(priorDate.toString())}
+      {console.log(today.toString())}
       <table id="customers">
         <thead>
           <tr>

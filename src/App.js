@@ -4,6 +4,7 @@ import Nav from "./views/Nav";
 import { useState, useEffect } from "react";
 import Todo from "./views/Todo";
 import Covid from "./views/Covid";
+import { CountDown, NewCountDown } from "./views/CountDown";
 
 //~~class
 const App = () => {
@@ -34,7 +35,10 @@ const App = () => {
   //   newTodos = newTodos.filter((item) => item.id !== todo.id);
   //   setTodos(newTodos);
   // };
-
+  const onTimesup = () => {
+    console.log("Times up");
+    // alert("Times up");
+  };
   useEffect(() => {
     // console.log("Run useEffect");
   }, []);
@@ -46,7 +50,9 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         <Nav />
-
+        <CountDown onTimesup={onTimesup} />
+        <span>---------------</span>
+        <NewCountDown onTimesup={onTimesup} />
         <div
           style={{ display: "flex", flexWrap: "nowrap", margin: "24px 10px" }}
         >
