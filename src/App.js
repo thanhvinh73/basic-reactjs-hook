@@ -1,97 +1,42 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Nav from "./views/Nav";
-import { useState, useEffect } from "react";
 import Todo from "./views/Todo";
 import Covid from "./views/Covid";
 import { CountDown, NewCountDown } from "./views/CountDown";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ErrorPage from "./views/ErrorPage";
 
 //~~class
 const App = () => {
-  //state
-  // let [name] = useState("Vinh");
-  // let [newTodoTitle, setNewTodoTitle] = useState("");
-  // const [todos, setTodos] = useState([
-  //   { id: "todo1", title: "Doing homework", type: "eric" },
-  //   { id: "todo2", title: "Watching movie", type: "eric" },
-  //   { id: "todo3", title: "Playing game", type: "VinhThanh" },
-  //   { id: "todo4", title: "Listening japanese", type: "VinhThanh" },
-  // ]);
-
-  // const createNewTodo = () => {
-  //   if (newTodoTitle && newTodoTitle !== "") {
-  //     let newTodo = {
-  //       title: newTodoTitle,
-  //       id: Math.floor(Math.random() * 100),
-  //       type: "eric",
-  //     };
-  //     setTodos([...todos, newTodo]);
-  //     setNewTodoTitle("");
-  //   }
-  // };
-
-  // const deleteTodo = (todo) => {
-  //   let newTodos = todos;
-  //   newTodos = newTodos.filter((item) => item.id !== todo.id);
-  //   setTodos(newTodos);
-  // };
   const onTimesup = () => {
     console.log("Times up");
-    // alert("Times up");
   };
-  useEffect(() => {
-    // console.log("Run useEffect");
-  }, []);
-  //useEffect((), []) = componentDidMount
-  //useEffect((), [a, b, c]) = componentDidUpdate
-  //useEffect((...return...), []) = componentDidMount, componentWillUnmount
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <Nav />
-        <CountDown onTimesup={onTimesup} />
-        <span>---------------</span>
-        <NewCountDown onTimesup={onTimesup} />
-        <div
-          style={{ display: "flex", flexWrap: "nowrap", margin: "24px 10px" }}
-        >
-          <h3 style={{ margin: "auto 0" }}>
-            Coronavirus stats in the Vietnam{" "}
-          </h3>
-          <img
-            src={logo}
-            className="App-logo"
-            alt="logo"
-            style={{ margin: "auto 0" }}
-          />
-        </div>
-        <Covid />
+    <BrowserRouter>
+      <div className="App">
+        <header className="App-header">
+          <Nav />
 
-        {/* <Todo todos={todos} title={"All Todo"} deleteTodo={deleteTodo} />
-        <Todo
-          todos={todos.filter((item) => item.type === "VinhThanh")}
-          title={"VinhThanh's Todo"}
-          deleteTodo={deleteTodo}
-        />
-        <input
-          type="text"
-          value={newTodoTitle}
-          onChange={(event) => {
-            setNewTodoTitle(event.target.value);
-          }}
-        />
-        <button
-          type="button"
-          style={{ marginTop: "10px" }}
-          onClick={() => {
-            createNewTodo();
-          }}
-        >
-          Add todo
-        </button> */}
-      </header>
-    </div>
+          <Routes>
+            <Route path="/" element={<Covid />} />
+            <Route
+              path="/timer"
+              element={
+                <div>
+                  {" "}
+                  <CountDown onTimesup={onTimesup} />
+                  <span>---------------</span>
+                  <NewCountDown onTimesup={onTimesup} />
+                </div>
+              }
+            />
+            <Route path="/todo" element={<Todo />} />
+            <Route path="*" element={<ErrorPage />} />
+          </Routes>
+        </header>
+      </div>
+    </BrowserRouter>
   );
 };
 

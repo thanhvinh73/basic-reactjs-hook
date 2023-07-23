@@ -1,8 +1,36 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <App />,
+//     errorElement: <ErrorPage />,
+//     children: [
+//       {
+//         path: "/",
+//         element: <Covid />,
+//       },
+//       {
+//         path: "/timer",
+//         element: (
+//           <div>
+//             <CountDown />
+//             <span>---------------</span>
+//             <NewCountDown />
+//           </div>
+//         ),
+//       },
+//     ],
+//   },
+
+//   {
+//     path: "/todo",
+//     element: <div>Todo</div>,
+//   },
+// ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

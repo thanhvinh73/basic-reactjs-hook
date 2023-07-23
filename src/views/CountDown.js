@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 class CountDown extends React.Component {
   state = {
-    count: 5,
+    count: 60,
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -32,7 +32,7 @@ class CountDown extends React.Component {
 }
 
 const NewCountDown = (props) => {
-  const [count, setCount] = useState(5);
+  const [count, setCount] = useState(60);
   useEffect(() => {
     if (count === 0) {
       props.onTimesup();

@@ -1,15 +1,43 @@
+import { NavLink } from "react-router-dom";
 import "./Nav.scss";
 
 const Nav = () => {
   return (
     <>
       <div className="topnav">
-        <a className="active" href="#home">
+        <NavLink
+          to={`/`}
+          className={({ isActive, isPending }) => {
+            return isPending ? "pending" : isActive ? "active" : "";
+          }}
+        >
           Home
-        </a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
+        </NavLink>
+        <NavLink
+          to={`/timer`}
+          isActive={true}
+          className={({ isActive, isPending }) => {
+            return isPending ? "pending" : isActive ? "active" : "";
+          }}
+        >
+          Timer Apps
+        </NavLink>
+        <NavLink
+          to={`/todo`}
+          className={({ isActive, isPending }) => {
+            return isPending ? "pending" : isActive ? "active" : "";
+          }}
+        >
+          Todo Apps
+        </NavLink>
+        <NavLink
+          to={`/secret`}
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "active" : ""
+          }
+        >
+          Secret
+        </NavLink>
       </div>
     </>
   );

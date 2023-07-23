@@ -1,5 +1,6 @@
 import useFetch from "../customize/fetch";
 import moment from "moment";
+import logo from "../logo.svg";
 
 const Covid = () => {
   const today = new Date(new Date().setHours(0, 0, 0, 0));
@@ -15,6 +16,15 @@ const Covid = () => {
 
   return (
     <>
+      <div style={{ display: "flex", flexWrap: "nowrap", margin: "24px 10px" }}>
+        <h3 style={{ margin: "auto 0" }}>Coronavirus stats in the Vietnam </h3>
+        <img
+          src={logo}
+          className="App-logo"
+          alt="logo"
+          style={{ margin: "auto 0" }}
+        />
+      </div>
       {console.log(priorDate.toString())}
       {console.log(today.toString())}
       <table id="customers">
