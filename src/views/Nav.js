@@ -15,7 +15,6 @@ const Nav = () => {
         </NavLink>
         <NavLink
           to={`/timer`}
-          isActive={true}
           className={({ isActive, isPending }) => {
             return isPending ? "pending" : isActive ? "active" : "";
           }}

@@ -14,6 +14,12 @@ class CountDown extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    if (this.timer) {
+      clearInterval(this.timer);
+    }
+  }
+
   componentDidMount() {
     this.timer = setInterval(() => {
       this.setState({
@@ -24,7 +30,6 @@ class CountDown extends React.Component {
   render() {
     return (
       <>
-        {console.log("render from class")}
         <div>{this.state.count} - Class</div>
       </>
     );
@@ -48,7 +53,6 @@ const NewCountDown = (props) => {
   }, [count]);
   return (
     <>
-      {console.log("render from hooks")}
       <div>{count} - Hooks</div>
     </>
   );

@@ -51,7 +51,8 @@ const Covid = () => {
                 </tr>
               );
             })}
-          {!error.isErr ? (
+
+          {!error.isErr && isLoading && (
             <tr>
               <td
                 colSpan={4}
@@ -65,7 +66,8 @@ const Covid = () => {
                 Loading...
               </td>
             </tr>
-          ) : (
+          )}
+          {error.isErr && (
             <tr>
               <td
                 colSpan={4}
