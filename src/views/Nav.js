@@ -30,6 +30,14 @@ const Nav = () => {
           Todo Apps
         </NavLink>
         <NavLink
+          to={`/blog`}
+          className={({ isActive, isPending }) => {
+            return isPending ? "pending" : isActive ? "active" : "";
+          }}
+        >
+          Blog Apps
+        </NavLink>
+        <NavLink
           to={`/secret`}
           className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "active" : ""
