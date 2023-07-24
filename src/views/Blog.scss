@@ -2,16 +2,17 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-top: 20px;
+  margin-top: 10px;
   gap: 10px;
   .single-blog {
     border: 1px solid grey;
     border-radius: 3px;
     padding: 10px;
     margin: 0 10px;
-    max-width: 444px;
+    width: 444px;
     text-align: left !important;
     .title {
+      display: flex;
       font-size: 18px;
       font-weight: 600;
     }
@@ -20,6 +21,11 @@
       font-size: 15px;
     }
   }
+}
+
+.add-new {
+  margin: 10px 0;
+  cursor: pointer;
 }
 
 .blog-detail {
@@ -54,5 +60,34 @@
     color: yellow;
     background-color: grey;
     margin-top: 10px;
+  }
+}
+
+.add-new-container {
+  max-width: 400px;
+  border: 2px solid grey;
+  padding: 5px;
+  margin-top: 20px;
+  border-radius: 5px;
+  text-align: center;
+  .text-add-new {
+    margin: 10px 10px;
+    color: red;
+  }
+  .inputs-data {
+    padding: 5px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    text-align: left !important;
+    input {
+      border: 1px solid green;
+      border-radius: 5px;
+    }
+  }
+  .add-new {
+    width: 100px;
+    border-radius: 5px;
+    border: 2px solid red;
   }
 }

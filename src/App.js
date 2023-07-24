@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ErrorPage from "./views/ErrorPage";
 import Blog from "./views/Blog";
 import BlogDetail from "./views/BlogDetail";
+import AddNewBlog from "./views/AddNewBlog";
 
 //~~class
 const App = () => {
@@ -36,6 +37,7 @@ const App = () => {
             <Route path="/todo" element={<Todo />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<BlogDetail />} />
+            <Route path="/add-new-blog" element={<AddNewBlog />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </header>
