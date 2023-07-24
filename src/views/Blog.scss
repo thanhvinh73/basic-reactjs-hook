@@ -9,7 +9,7 @@
     border-radius: 3px;
     padding: 10px;
     margin: 0 10px;
-    max-width: 400px;
+    max-width: 444px;
     text-align: left !important;
     .title {
       font-size: 18px;
@@ -19,5 +19,40 @@
       padding: 10px 0;
       font-size: 15px;
     }
+  }
+}
+
+.blog-detail {
+  border: 2px solid grey;
+  padding: 10px;
+  border-radius: 5px;
+  min-height: 100px;
+  margin: 10px;
+  min-width: 50vw;
+  max-width: 70vw;
+
+  .blog-id {
+    color: red;
+  }
+  .title {
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: 10px;
+    font-size: 30px;
+  }
+  .content {
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: justify;
+  }
+  .button-back {
+    width: 200px;
+    float: right;
+    height: 30px;
+    border-radius: 10px;
+    color: yellow;
+    background-color: grey;
+    margin-top: 10px;
   }
 }
