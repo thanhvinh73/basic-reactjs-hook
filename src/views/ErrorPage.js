@@ -1,4 +1,9 @@
+import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+
 const ErrorPage = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <div id="error-page">
@@ -7,6 +12,15 @@ const ErrorPage = () => {
         <p>
           <i>404 ERROR</i>
         </p>
+        <Button
+          variant="primary"
+          type="button"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          Go to Home Page
+        </Button>
       </div>
     </>
   );

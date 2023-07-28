@@ -8,6 +8,7 @@ import ErrorPage from "./views/ErrorPage";
 import Blog from "./views/Blog";
 import BlogDetail from "./views/BlogDetail";
 import AddNewBlog from "./views/AddNewBlog";
+import Secret from "./views/Secret";
 
 //~~class
 const App = () => {
@@ -38,6 +39,7 @@ const App = () => {
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<BlogDetail />} />
             <Route path="/add-new-blog" element={<AddNewBlog />} />
+            <Route path="/secret" element={<Secret />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </header>
